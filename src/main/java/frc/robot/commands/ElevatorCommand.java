@@ -41,31 +41,6 @@ public class ElevatorCommand extends CommandBase {
                     elevator.setStop();
                 }
 
-                /*
-                 * if (elevator.getEncoder() <= -100) {
-                 * elevator.setStop();
-                 * iCount++;
-                 * } else {
-                 * elevator.setDown();
-                 * }
-                 * break;
-                 * case 1:
-                 * if (elevator.getEncoder() >= 100) {
-                 * elevator.setStop();
-                 * iCount++;
-                 * } else {
-                 * elevator.setUp();
-                 * }
-                 * break;
-                 * case 2:
-                 * if (elevator.getEncoder() <= -100) {
-                 * elevator.setStop();
-                 * iCount++;
-                 * } else {
-                 * elevator.setDown();
-                 * 
-                 * }
-                 */
         }
 
     }

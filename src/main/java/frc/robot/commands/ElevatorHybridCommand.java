@@ -25,7 +25,7 @@ public class ElevatorHybridCommand extends CommandBase {
         SmartDashboard.putNumber("iCount", iCount);
         SmartDashboard.putNumber("Elevator Encoder", elevator.getEncoder());
 
-        elevator.speedPID(0);
+        elevator.printP(0);
     }
 
     @Override

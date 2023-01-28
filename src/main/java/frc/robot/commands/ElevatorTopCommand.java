@@ -25,7 +25,7 @@ public class ElevatorTopCommand extends CommandBase {
         SmartDashboard.putNumber("iCount", iCount);
         SmartDashboard.putNumber("Encoder Count", elevator.getEncoder());
 
-        elevator.speedPID(200);
+        elevator.printP(200);
         }
     
 

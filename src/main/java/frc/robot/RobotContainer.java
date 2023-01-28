@@ -52,15 +52,15 @@ public class RobotContainer {
     //new JoystickButton(xbox, 5).onTrue(new TankCommand(driveSubsystem, () -> xbox.getRightY(), () -> xbox.getLeftY()));
 
    //right trigger sets motor down, right bumper sets motor up
-   //new JoystickButton(xbox, 1).whileTrue(new ElevatorDownCommand(elevatorSubsystem, -0.5));
+   new JoystickButton(xbox, 1).onTrue(new ElevatorDownCommand(elevatorSubsystem));
    //new JoystickButton(xbox, 4).whileTrue(new ElevatorUpCommand(elevatorSubsystem, 0.5));
 
-   new JoystickButton(xbox, 1).whileTrue(new ArmDownCommand(armSubsystem, -0.5));
-   new JoystickButton(xbox, 4).whileTrue(new ArmUpCommand(armSubsystem, 0.5));
+   //new JoystickButton(xbox, 1).whileTrue(new ArmDownCommand(armSubsystem));
+   //new JoystickButton(xbox, 4).whileTrue(new ArmUpCommand(armSubsystem, 0.5));
 
-   new JoystickButton(xbox, 2).onTrue(new ElevatorTopCommand(elevatorSubsystem));
-   new JoystickButton(xbox, 3).onTrue(new ElevatorMiddleCommand(elevatorSubsystem));
-   new JoystickButton(xbox, 5).onTrue(new ElevatorHybridCommand(elevatorSubsystem));
+  //new JoystickButton(xbox, 1).onTrue(new ElevatorTopCommand(elevatorSubsystem));
+  //new JoystickButton(xbox, 2).onTrue(new ElevatorMiddleCommand(elevatorSubsystem));
+  //new JoystickButton(xbox, 3).onTrue(new ElevatorHybridCommand(elevatorSubsystem));
 
    //new JoystickButton(xbox, 2).onTrue(new ArmCommand(armSubsystem, armSubsystem.speedLimit(1)));
  

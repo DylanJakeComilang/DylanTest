@@ -28,20 +28,6 @@ public class ArmSubsystem extends SubsystemBase {
     public void resetEncoder() {
         relEnc.setPosition(0);
     }
-
-    // Limits
-
-    public double pos() {
-        return pos;
-    }
-
-    public double posLimit() {
-        return (pos - getEncoder()) * 0.01;
-    }
-    
-    public double speedLimit(double speed) {
-        return speed * posLimit();
-    }
     
     // Auto Methods
 

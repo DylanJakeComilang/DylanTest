@@ -9,7 +9,7 @@ public class ElevatorDownCommand extends CommandBase {
     private double speed;
     private int iCount;
 
-    public ElevatorDownCommand(ElevatorSubsystem elevator, double speed) {
+    public ElevatorDownCommand(ElevatorSubsystem elevator) {
         this.elevator = elevator;
         this.speed = speed;
         addRequirements(elevator);
@@ -18,6 +18,7 @@ public class ElevatorDownCommand extends CommandBase {
     @Override
     public void initialize() {
         SmartDashboard.putString("Elevator State", "Starting");
+        elevator.resetEncoder();
         iCount = 0;
     }
 
@@ -26,13 +27,16 @@ public class ElevatorDownCommand extends CommandBase {
         SmartDashboard.putString("Elevator State", "Executing");
         SmartDashboard.putNumber("iCount", iCount);
         SmartDashboard.putNumber("Elevator Encoder", elevator.getEncoder());
+        SmartDashboard.putNumber("setpoint", 100);
+        elevator.printP(100);
 
-        if (elevator.getEncoder() <= -50) {
+
+        /*if (elevator.getEncoder() <= -50) {
             elevator.setStop();
         }
         else {
             elevator.setSpeed(speed);
-        }
+        }*/
 
     }
 
