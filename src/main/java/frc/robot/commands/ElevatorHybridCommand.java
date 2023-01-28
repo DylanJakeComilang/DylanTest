@@ -6,12 +6,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorHybridCommand extends CommandBase {
     private ElevatorSubsystem elevator;
-    private double speed;
     private int iCount;
 
     public ElevatorHybridCommand(ElevatorSubsystem elevator) {
         this.elevator = elevator;
-        this.speed = speed;
         addRequirements(elevator);
     }
 
@@ -27,7 +25,7 @@ public class ElevatorHybridCommand extends CommandBase {
         SmartDashboard.putNumber("iCount", iCount);
         SmartDashboard.putNumber("Elevator Encoder", elevator.getEncoder());
 
-        elevator.setSpeed(elevator.calculateP(0));
+        elevator.speedPID(0);
     }
 
     @Override

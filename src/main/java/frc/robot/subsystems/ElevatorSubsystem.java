@@ -3,14 +3,9 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import java.lang.Math;
 import edu.wpi.first.math.controller.PIDController;
-
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj2.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.ElevatorCommand;
 
 public class ElevatorSubsystem extends SubsystemBase {
 
@@ -18,7 +13,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
     private final CANSparkMax elevatorMotor1 = new CANSparkMax(3, MotorType.kBrushless);
     private final CANSparkMax elevatorMotor2 = new CANSparkMax(6, MotorType.kBrushless);
-    private final PIDController PID = new PIDController(0.1, 0, 0);
+    private final PIDController PID = new PIDController(0.1, 0.01, 0.05);
     private RelativeEncoder relEnc;
 
     public ElevatorSubsystem() {
@@ -41,8 +36,22 @@ public class ElevatorSubsystem extends SubsystemBase {
     
     // PID Method
 
+    public double errorSum(double set){
+            return Timer.getFPGATimestamp() -1;
+        
+    }
+
     public double calculateP(double setpoint){
-       return PID.calculate(getEncoder(), setpoint);
+       return PID.calculate(getEncoder(), setpoint) * PID.getP();
+    }
+
+    public double calculateD(){
+        return PID.getVelocityError() * PID.getD();
+    }
+
+    public void speedPID(double set){
+        elevatorMotor1.set(calculateP(set) +  + calculateD());
+        elevatorMotor2.set(calculateP(set) +  + calculateD());
     }
 
     // Teleop Methods
@@ -59,8 +68,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
 
     @Override
-    public void periodic(){
-        
+    public void periodic(){   
     }
 
 }
