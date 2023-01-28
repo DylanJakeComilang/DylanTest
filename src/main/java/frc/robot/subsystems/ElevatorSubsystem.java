@@ -6,23 +6,27 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ElevatorSubsystem extends SubsystemBase {
 
     // Objects
 
-    private final CANSparkMax elevatorMotor1 = new CANSparkMax(3, MotorType.kBrushless);
-    private final CANSparkMax elevatorMotor2 = new CANSparkMax(6, MotorType.kBrushless);
-    private final PIDController PID = new PIDController(0.1, 0.01, 0.05);
+    private final CANSparkMax elevatorMotor1 = new CANSparkMax(3,
+            MotorType.kBrushless);
+    private final CANSparkMax elevatorMotor2 = new CANSparkMax(6,
+            MotorType.kBrushless);
+    private final PIDController PID = new PIDController(0.07, 0.05, 0);
     private RelativeEncoder relEnc;
+    private double errorPos = 0;
 
     public ElevatorSubsystem() {
         relEnc = elevatorMotor1.getEncoder();
+        PID.setTolerance(0.1);
     }
 
-    ///////////////////////////////
-    ///         METHODS         ///
-    ///////////////////////////////
+    ///////////////////////////////          //  //  //////   //     // 
+    ///         METHODS         ///          //////  //  //   // / //
+    ///////////////////////////////          //  //  //////   // //
 
     // Encoder Methods
 
@@ -33,27 +37,53 @@ public class ElevatorSubsystem extends SubsystemBase {
     public void resetEncoder() {
         relEnc.setPosition(0);
     }
+
+    // Timer Methods
+
+    // PID Methods
+
+    public double calculateP(double setpoint) {
+        double calc = PID.calculate(getEncoder(), setpoint);
+        if(PID.atSetpoint()){
+            return 0;
+        }
+        if(calc > 1){
+            return 1;
+        }
+        else if(calc < -1){
+            return -1;
+        }
+        else{
+            return calc;
+        }
+    }
     
-    // PID Method
+    public void stopI(double setpoint){
+        double currentPos = PID.getPositionError();
+        if (currentPos > 0 && errorPos < 0){
+            PID.reset();
+        }
+        else if(currentPos < 0 && errorPos > 0){
+            PID.reset();
+        }
+        errorPos = PID.getPositionError();
+        SmartDashboard.putNumber("currentErrorPos", PID.getPositionError());
+        SmartDashboard.putNumber("lastErrorPos", errorPos);
+    }
+    
 
-    public double errorSum(double set){
-            return Timer.getFPGATimestamp() -1;
-        
+    public void printP(double setpoint){
+        double calc = calculateP(setpoint);
+        SmartDashboard.putNumber("error", calc);
+        elevatorMotor1.set(calc);
+        elevatorMotor2.set(calc);
+        stopI(setpoint);
     }
 
-    public double calculateP(double setpoint){
-       return PID.calculate(getEncoder(), setpoint) * PID.getP();
-    }
-
-    public double calculateD(){
+    public double calculateD() {
         return PID.getVelocityError() * PID.getD();
-    }
-
-    public void speedPID(double set){
-        elevatorMotor1.set(calculateP(set) +  + calculateD());
-        elevatorMotor2.set(calculateP(set) +  + calculateD());
-    }
-
+    }     
+     
     // Teleop Methods
 
     public void setSpeed(double speed) {
@@ -66,9 +96,8 @@ public class ElevatorSubsystem extends SubsystemBase {
         elevatorMotor2.set(0);
     }
 
-
     @Override
-    public void periodic(){   
+    public void periodic() {
     }
 
 }
