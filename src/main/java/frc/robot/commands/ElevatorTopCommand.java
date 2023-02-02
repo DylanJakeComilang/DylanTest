@@ -8,7 +8,7 @@ public class ElevatorTopCommand extends CommandBase {
     private ElevatorSubsystem elevator;
     private int iCount;
 
-    public ElevatorTopCommand(ElevatorSubsystem elevatorSubsystem) {
+    public ElevatorTopCommand(ElevatorSubsystem elevator) {
         this.elevator = elevator;
         addRequirements(elevator);
     }
@@ -23,8 +23,6 @@ public class ElevatorTopCommand extends CommandBase {
     public void execute() {
         SmartDashboard.putString("Elevator State", "Executing");
         SmartDashboard.putNumber("iCount", iCount);
-        SmartDashboard.putNumber("Encoder Count", elevator.getEncoder());
-
         elevator.printP(200);
         }
     

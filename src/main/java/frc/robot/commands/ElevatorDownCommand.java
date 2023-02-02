@@ -6,12 +6,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorDownCommand extends CommandBase {
     private ElevatorSubsystem elevator;
-    private double speed;
     private int iCount;
 
     public ElevatorDownCommand(ElevatorSubsystem elevator) {
         this.elevator = elevator;
-        this.speed = speed;
         addRequirements(elevator);
     }
 
@@ -20,6 +18,7 @@ public class ElevatorDownCommand extends CommandBase {
         SmartDashboard.putString("Elevator State", "Starting");
         elevator.resetEncoder();
         iCount = 0;
+
     }
 
     @Override
@@ -27,7 +26,6 @@ public class ElevatorDownCommand extends CommandBase {
         SmartDashboard.putString("Elevator State", "Executing");
         SmartDashboard.putNumber("iCount", iCount);
         SmartDashboard.putNumber("Elevator Encoder", elevator.getEncoder());
-        SmartDashboard.putNumber("setpoint", 100);
         elevator.printP(100);
 
 

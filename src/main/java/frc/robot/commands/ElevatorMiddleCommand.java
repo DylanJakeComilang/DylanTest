@@ -23,8 +23,6 @@ public class ElevatorMiddleCommand extends CommandBase {
     public void execute() {
         SmartDashboard.putString("Elevator State", "Executing");
         SmartDashboard.putNumber("iCount", iCount);
-        SmartDashboard.putNumber("Encoder Count", elevator.getEncoder());
-
         elevator.printP(100);
     }
 
@@ -32,7 +30,6 @@ public class ElevatorMiddleCommand extends CommandBase {
     public void end(boolean interrupted) {
         SmartDashboard.putString("Elevator State", "Ending");
         elevator.setStop();
-        elevator.resetEncoder();
         iCount = 0;
 
     }

@@ -23,8 +23,6 @@ public class ElevatorHybridCommand extends CommandBase {
     public void execute() {
         SmartDashboard.putString("Elevator State", "Executing");
         SmartDashboard.putNumber("iCount", iCount);
-        SmartDashboard.putNumber("Elevator Encoder", elevator.getEncoder());
-
         elevator.printP(0);
     }
 
