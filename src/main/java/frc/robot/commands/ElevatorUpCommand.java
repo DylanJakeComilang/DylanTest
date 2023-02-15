@@ -5,6 +5,7 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorUpCommand extends CommandBase {
+    /* 
     private ElevatorSubsystem elevator;
     private double speed;
     private int iCount;
@@ -50,4 +51,5 @@ public class ElevatorUpCommand extends CommandBase {
         }
         return false;
     }
+    */
 }

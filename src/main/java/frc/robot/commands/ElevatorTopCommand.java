@@ -5,6 +5,7 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorTopCommand extends CommandBase {
+    /* 
     private ElevatorSubsystem elevator;
     private int iCount;
 
@@ -37,9 +38,7 @@ public class ElevatorTopCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        if (iCount > 2) {
-            return true;
-        }
         return false;
     }
+    */
 }

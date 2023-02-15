@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorSubsystem extends SubsystemBase {
-
+/* 
     // Objects
 
     private final CANSparkMax elevatorMotor1 = new CANSparkMax(3,
@@ -68,14 +68,9 @@ public class ElevatorSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("lastErrorPos", errorPos);
     }
 
-    public void controlD(){
-        double currentVel = PID.getVelocityError();
-
-    }
-
     public void printP(double setpoint) {
         double calc = calculateP(setpoint);
-        SmartDashboard.putNumber("elevator enc", getEncoder());
+        
         SmartDashboard.putNumber("error", calc);
         SmartDashboard.putNumber("setpoint", setpoint);
         elevatorMotor1.set(calc);
@@ -97,6 +92,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
+        SmartDashboard.putNumber("elevator enc", getEncoder());
     }
-
+*/
 }

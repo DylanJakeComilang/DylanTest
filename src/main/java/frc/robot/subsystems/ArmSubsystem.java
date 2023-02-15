@@ -6,6 +6,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class ArmSubsystem extends SubsystemBase {
+  /*
     private final CANSparkMax ArmMotor1 = new CANSparkMax(2, MotorType.kBrushless);
     private final CANSparkMax ArmMotor2 = new CANSparkMax(15, MotorType.kBrushless);
     RelativeEncoder relEnc;
@@ -56,4 +57,5 @@ public class ArmSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
     }
+     */
 }

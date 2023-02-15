@@ -5,6 +5,7 @@ import frc.robot.subsystems.ArmSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ArmCommand extends CommandBase {
+    /* 
     ArmSubsystem arm;
     double speed;
     int iCount;
@@ -57,7 +58,7 @@ public class ArmCommand extends CommandBase {
          * arm.setForwards();
          * }
          * }
-         */
+         
     }
 
     @Override
@@ -71,5 +72,5 @@ public class ArmCommand extends CommandBase {
     public boolean isFinished() {
         return iCount >= 3;
     }
-
+*/
 }

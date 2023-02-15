@@ -5,6 +5,7 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorDownCommand extends CommandBase {
+    /*
     private ElevatorSubsystem elevator;
     private int iCount;
 
@@ -29,12 +30,12 @@ public class ElevatorDownCommand extends CommandBase {
         elevator.printP(100);
 
 
-        /*if (elevator.getEncoder() <= -50) {
+        if (elevator.getEncoder() <= -50) {
             elevator.setStop();
         }
         else {
             elevator.setSpeed(speed);
-        }*/
+        }
 
     }
 
@@ -53,5 +54,6 @@ public class ElevatorDownCommand extends CommandBase {
         }
         return false;
     }
+    */
 }
 

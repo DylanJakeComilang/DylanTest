@@ -27,7 +27,7 @@ public class TankCommand extends CommandBase {
         double leftSp = leftSpeed.getAsDouble();
         double RightSp = rightSpeed.getAsDouble();
 
-      //  tankSubsystem.setTank(leftSp, RightSp);
+        tankSubsystem.setTank(leftSp, RightSp);
     }
 
     @Override

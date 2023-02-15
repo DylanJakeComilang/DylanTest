@@ -39,7 +39,7 @@ public class RobotContainer {
   private final XboxController xbox = new XboxController(1);
 
   public RobotContainer() {
-   // driveSubsystem.setDefaultCommand(new ArcadeCommand(driveSubsystem, () -> xbox.getLeftY(), () -> xbox.getRightX())); //set arcade drive
+    driveSubsystem.setDefaultCommand(new ArcadeCommand(driveSubsystem, () -> xbox.getLeftY(), () -> xbox.getRightX())); //set arcade drive
 
     configureBindings();
     
@@ -49,7 +49,7 @@ public class RobotContainer {
    // new JoystickButton(xbox, 5).onTrue(new MoveButtonCommand(oneWheelSubsystem)); 
    
    //when button 5 is held, controlls are now tank
-    //new JoystickButton(xbox, 5).onTrue(new TankCommand(driveSubsystem, () -> xbox.getRightY(), () -> xbox.getLeftY()));
+    new JoystickButton(xbox, 5).whileTrue(new TankCommand(driveSubsystem, () -> xbox.getRightY(), () -> xbox.getLeftY()));
 
    //right trigger sets motor down, right bumper sets motor up
    //new JoystickButton(xbox, 1).onTrue(new ElevatorDownCommand(elevatorSubsystem));
@@ -58,9 +58,9 @@ public class RobotContainer {
    //new JoystickButton(xbox, 1).whileTrue(new ArmDownCommand(armSubsystem));
    //new JoystickButton(xbox, 4).whileTrue(new ArmUpCommand(armSubsystem, 0.5));
 
-  new JoystickButton(xbox, 1).onTrue(new ElevatorTopCommand(elevatorSubsystem));
-  new JoystickButton(xbox, 2).onTrue(new ElevatorMiddleCommand(elevatorSubsystem));
-  new JoystickButton(xbox, 3).onTrue(new ElevatorHybridCommand(elevatorSubsystem));
+   //new JoystickButton(xbox, 1).onTrue(new ElevatorTopCommand(elevatorSubsystem));
+   //new JoystickButton(xbox, 2).onTrue(new ElevatorMiddleCommand(elevatorSubsystem));
+   //new JoystickButton(xbox, 3).onTrue(new ElevatorHybridCommand(elevatorSubsystem));
 
    //new JoystickButton(xbox, 2).onTrue(new ArmCommand(armSubsystem, armSubsystem.speedLimit(1)));
  

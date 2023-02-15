@@ -5,10 +5,11 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorHybridCommand extends CommandBase {
-    private ElevatorSubsystem elevator;
+    /* private ElevatorSubsystem elevator;
     private int iCount;
 
     public ElevatorHybridCommand(ElevatorSubsystem elevator) {
+    
         this.elevator = elevator;
         addRequirements(elevator);
     }
@@ -36,10 +37,7 @@ public class ElevatorHybridCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        if (iCount > 2) {
-            return true;
-        }
         return false;
-    }
+    } */
 }
 

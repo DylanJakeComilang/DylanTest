@@ -27,7 +27,7 @@ public class ArcadeCommand extends CommandBase {
         double leftSp = xSpeed.getAsDouble();
         double RightSp = zSpeed.getAsDouble();
 
-      //  driveSubsystem.setArcade(leftSp, RightSp);
+        driveSubsystem.setArcade(leftSp, RightSp);
     }
 
     @Override
