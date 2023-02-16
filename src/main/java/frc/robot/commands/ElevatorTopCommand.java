@@ -5,7 +5,6 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorTopCommand extends CommandBase {
-    /* 
     private ElevatorSubsystem elevator;
     private int iCount;
 
@@ -24,7 +23,7 @@ public class ElevatorTopCommand extends CommandBase {
     public void execute() {
         SmartDashboard.putString("Elevator State", "Executing");
         SmartDashboard.putNumber("iCount", iCount);
-        elevator.printP(200);
+        elevator.outputMotor(200);
         }
     
 
@@ -40,5 +39,5 @@ public class ElevatorTopCommand extends CommandBase {
     public boolean isFinished() {
         return false;
     }
-    */
+    
 }

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;                                        
 
 public class DriveSubsystem extends SubsystemBase {                                        
+    /* 
     private final CANSparkMax frontLeft = new CANSparkMax(6, MotorType.kBrushless);                                         
     private final CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);                                        
     private final CANSparkMax backLeft = new CANSparkMax(3, MotorType.kBrushless);                                        
@@ -80,4 +81,5 @@ public class DriveSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Left Encoder", getLeftEncoder());
         SmartDashboard.putNumber("Right Encoder", getRightEncoder());
     } 
+    */
 }

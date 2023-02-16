@@ -1,25 +1,26 @@
 package frc.robot.subsystems;
 
+import com.fasterxml.jackson.core.io.OutputDecorator;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorSubsystem extends SubsystemBase {
-/* 
+ 
     // Objects
 
     private final CANSparkMax elevatorMotor1 = new CANSparkMax(3,
             MotorType.kBrushless);
     private final CANSparkMax elevatorMotor2 = new CANSparkMax(6,
             MotorType.kBrushless);
-    private final PIDController PID = new PIDController(0.07, 0.005, 0);
+    private final PIDController PID = new PIDController(0.14, 0.01, 0.001); //0.14 , 0.01
     private RelativeEncoder relEnc;
     private double errorPos = 0;
-    private double errorVel = 0;
+    private double calc;
+    private double setPoint;
 
     public ElevatorSubsystem() {
         relEnc = elevatorMotor1.getEncoder();
@@ -47,10 +48,10 @@ public class ElevatorSubsystem extends SubsystemBase {
         if (PID.atSetpoint()) {
             return 0;
         }
-        if (calc > 1) {
-            return 1;
-        } else if (calc < -1) {
-            return -1;
+        if (calc > 0.5) {
+            return 0.5;
+        } else if (calc < -0.5) {
+            return -0.5;
         } else {
             return calc;
         }
@@ -64,15 +65,11 @@ public class ElevatorSubsystem extends SubsystemBase {
             PID.reset();
         }
         errorPos = PID.getPositionError();
-        SmartDashboard.putNumber("currentErrorPos", PID.getPositionError());
-        SmartDashboard.putNumber("lastErrorPos", errorPos);
     }
 
-    public void printP(double setpoint) {
-        double calc = calculateP(setpoint);
-        
-        SmartDashboard.putNumber("error", calc);
-        SmartDashboard.putNumber("setpoint", setpoint);
+    public void outputMotor(double setpoint) {
+        setPoint = setpoint;
+        calc = calculateP(setpoint);
         elevatorMotor1.set(calc);
         elevatorMotor2.set(calc);
         stopI();
@@ -93,6 +90,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         SmartDashboard.putNumber("elevator enc", getEncoder());
+        SmartDashboard.putNumber("Encoder Counts", getEncoder());
+        SmartDashboard.putNumber("ErrorValue", PID.getPositionError());
+        SmartDashboard.putNumber("Output Motor", calc);
+        SmartDashboard.putNumber("Setpoint", setPoint);
     }
-*/
+
 }
